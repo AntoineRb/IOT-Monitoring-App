@@ -1,4 +1,4 @@
-# Webreath IOT monitoring App
+# Webreathe IOT monitoring App
 
 ## Techno:
 
