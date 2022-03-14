@@ -9,3 +9,34 @@ datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
 }
+
+model Module {
+  id            Int @id @default(autoincrement())
+  creationDate  DateTime @default(now())
+  type          String  @db.VarChar(50)
+  name          String  @unique @db.VarChar(100)
+  infoId        Int
+  detail        Detail @relation(fields: [infoId], references: [id])
+  logs          Logs[]
+}
+
+model Detail {
+  id              Int @id @default(autoincrement())
+  value           Float
+  unit            String @db.VarChar(25)
+  operatingTime   DateTime
+  moduleState     Boolean @default(true)
+  module          Module?
+  dataCount       Int @default(0)
+}
+
+model Logs {
+  id              Int @id @default(autoincrement())
+  date            DateTime
+  value           Float
+  unit            String @db.VarChar(25)
+  operatingTime   DateTime
+  moduleState     Boolean 
+  module          Module  @relation(fields: [moduleId], references: [id])
+  moduleId        Int
+}
