@@ -9,3 +9,72 @@ datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
 }
+
+model Module {
+  id          Int @id @default(autoincrement())
+  added_Date  DateTime @default(now())
+  type        String  @db.VarChar(50)
+  name        String  @db.VarChar(100)
+  info_Id     Int
+  info        Module_Info @relation(fields: [info_Id], references: [id])
+  logs        Log[]
+}
+
+model Module_Info {
+  id              Int @id @default(autoincrement())
+  value           Float
+  unit            String @db.VarChar(25)
+  operating_Time  DateTime
+  module_state    Boolean @default(false)
+  module          Module?
+}
+
+model Log {
+  id              Int @id @default(autoincrement())
+  value           Float
+  unit            String @db.VarChar(25)
+  operating_Time  DateTime
+  module_state    Boolean @default(false)
+  module          Module  @relation(fields: [moduleId], references: [id])
+  moduleId        Int
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// model Post {
+//   id        Int      @id @default(autoincrement())
+//   author    User     @relation(fields: [authorId], references: [id])
+//   authorId  Int
+// }
+
+// model Profile {
+//   user   User    @relation(fields: [userId], references: [id])
+//   userId Int     @unique
+// }
+
+// model User {
+//   id      Int      @id @default(autoincrement())
+//   email   String   @unique
+//   posts   Post[]
+//   profile Profile?
+// }
