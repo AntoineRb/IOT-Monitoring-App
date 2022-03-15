@@ -3,7 +3,7 @@ import { IRouterContext } from "koa-router";
 
 import { IDetail } from "../types/interface";
 
-import { create, findMany, findUnique } from "../services/detail";
+import { create, findMany, findUnique, update } from "../services/detail";
 
 const prisma = new PrismaClient();
 
@@ -44,4 +44,23 @@ export const findUniqueController = async ( id:number ) => {
     .finally( () => {
         prisma.$disconnect;
     });
+}
+
+export const updateController = async ( id:number, ctx:IRouterContext ) => {
+    let requestIsOk = false;
+    const data: IDetail = ctx.request.body;
+    await update( id, data )
+    .then( () => {
+        requestIsOk = true;
+    })
+    .catch( ( e:Error ) => {
+        throw e;  
+    })
+    .finally( () => {
+        prisma.$disconnect;
+    })
+    if ( requestIsOk ) {
+        return "Detail du module mis à jours avec succès !"
+    }
+    return "Une erreur c'est produite !"
 }

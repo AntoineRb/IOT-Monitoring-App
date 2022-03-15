@@ -21,3 +21,12 @@ export const findUnique = async ( id:number ) => {
         }
     });
 }
+
+export const update = async ( id:number, data:IDetail ) => {
+    return await prisma.detail.update({
+        where: {
+            id
+        },
+        data
+    })
+}
