@@ -13,3 +13,11 @@ export const create = async ( data:IDetail ) => {
 export const findMany = async () => {
     return await prisma.detail.findMany();
 }
+
+export const findUnique = async ( id:number ) => {
+    return await prisma.detail.findUnique({
+        where: {
+            id
+        }
+    });
+}
