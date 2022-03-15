@@ -23,10 +23,10 @@ model Detail {
   id              Int @id @default(autoincrement())
   value           Float
   unit            String @db.VarChar(25)
-  operatingTime   DateTime
+  operatingTime   DateTime @default(now())
   moduleState     Boolean @default(true)
   dataCount       Int @default(0)
-  module          Module  @relation(fields: [moduleId], references: [id])
+  module          Module  @relation(fields: [moduleId], references: [id], onDelete: Cascade)
   moduleId        Int
 }
 
@@ -37,6 +37,6 @@ model Logs {
   unit            String @db.VarChar(25)
   operatingTime   DateTime
   moduleState     Boolean 
-  module          Module  @relation(fields: [moduleId], references: [id])
+  module          Module  @relation(fields: [moduleId], references: [id], onDelete: Cascade)
   moduleId        Int
 }

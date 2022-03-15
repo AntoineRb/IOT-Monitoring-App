@@ -13,7 +13,7 @@ CREATE TABLE "Detail" (
     "id" SERIAL NOT NULL,
     "value" DOUBLE PRECISION NOT NULL,
     "unit" VARCHAR(25) NOT NULL,
-    "operatingTime" TIMESTAMP(3) NOT NULL,
+    "operatingTime" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "moduleState" BOOLEAN NOT NULL DEFAULT true,
     "dataCount" INTEGER NOT NULL DEFAULT 0,
     "moduleId" INTEGER NOT NULL,
@@ -41,7 +41,7 @@ CREATE UNIQUE INDEX "Module_name_key" ON "Module"("name");
 CREATE UNIQUE INDEX "Detail_moduleId_key" ON "Detail"("moduleId");
 
 -- AddForeignKey
-ALTER TABLE "Detail" ADD CONSTRAINT "Detail_moduleId_fkey" FOREIGN KEY ("moduleId") REFERENCES "Module"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
+ALTER TABLE "Detail" ADD CONSTRAINT "Detail_moduleId_fkey" FOREIGN KEY ("moduleId") REFERENCES "Module"("id") ON DELETE CASCADE ON UPDATE CASCADE;
 
 -- AddForeignKey
-ALTER TABLE "Logs" ADD CONSTRAINT "Logs_moduleId_fkey" FOREIGN KEY ("moduleId") REFERENCES "Module"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
+ALTER TABLE "Logs" ADD CONSTRAINT "Logs_moduleId_fkey" FOREIGN KEY ("moduleId") REFERENCES "Module"("id") ON DELETE CASCADE ON UPDATE CASCADE;
