@@ -16,6 +16,9 @@ router.get( '/module/:id', async ( ctx:IRouterContext ) => {
     ctx.body = await crud.findUniqueController( id );
 })
 
-
+router.patch( '/module/update/:id', async ( ctx:IRouterContext ) => {
+    const id:number = +ctx.params.id;
+    ctx.body = await crud.updateController( id, ctx );
+})
 
 export default router;
