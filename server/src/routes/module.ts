@@ -21,4 +21,9 @@ router.patch( '/module/update/:id', async ( ctx:IRouterContext ) => {
     ctx.body = await crud.updateController( id, ctx );
 })
 
+router.delete( '/module/delete/:id', async ( ctx:IRouterContext ) => {
+    const id:number = +ctx.params.id;
+    ctx.body = await crud.deleteUniqueController( id );
+})
+
 export default router;

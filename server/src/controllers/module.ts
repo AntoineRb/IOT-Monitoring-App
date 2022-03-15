@@ -1,6 +1,6 @@
 import { PrismaClient } from "@prisma/client";
 import { IRouterContext } from "koa-router";
-import {create, findUnique, findMany, update} from "../services/module";
+import {create, findUnique, findMany, update, deleteUnique} from "../services/module";
 import { IModule } from "../types/interface";
 
 const prisma = new PrismaClient();
@@ -59,6 +59,24 @@ export const updateController = async ( id:number, ctx:IRouterContext ) => {
     })
     if ( requestIsOk ) {
         return "Module mis à jours avec succès !"
+    }
+    return "Une erreur c'est produite !"
+}
+
+export const deleteUniqueController = async ( id:number ) => {
+    let requestIsOk = false;
+    await deleteUnique( id )
+    .then( () => {
+        requestIsOk = true;
+    })
+    .catch( ( e:Error ) => {
+        throw e;  
+    })
+    .finally( () => {
+        prisma.$disconnect;
+    })
+    if ( requestIsOk ) {
+        return "Module supprimé avec succès !"
     }
     return "Une erreur c'est produite !"
 }
