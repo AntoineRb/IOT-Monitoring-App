@@ -13,7 +13,7 @@ CREATE TABLE "Detail" (
     "id" SERIAL NOT NULL,
     "value" DOUBLE PRECISION NOT NULL,
     "unit" VARCHAR(25) NOT NULL,
-    "operatingTime" TIMESTAMP(3) NOT NULL,
+    "operatingTime" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "moduleState" BOOLEAN NOT NULL DEFAULT true,
     "dataCount" INTEGER NOT NULL DEFAULT 0,
     "moduleId" INTEGER NOT NULL,
