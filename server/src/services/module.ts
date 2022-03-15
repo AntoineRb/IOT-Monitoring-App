@@ -10,7 +10,11 @@ export const create = async ( data: IModule ) => {
     })
 }
 
-export const findUnique = async ( id: number ) => {
+export const findMany = async () => {
+    return await prisma.module.findMany();
+}
+
+export const findUnique = async ( id:number ) => {
     return await prisma.module.findUnique({
         where: {
             id
