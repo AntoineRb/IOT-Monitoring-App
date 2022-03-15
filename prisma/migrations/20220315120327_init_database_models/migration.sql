@@ -4,7 +4,6 @@ CREATE TABLE "Module" (
     "creationDate" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "type" VARCHAR(50) NOT NULL,
     "name" VARCHAR(100) NOT NULL,
-    "infoId" INTEGER NOT NULL,
 
     CONSTRAINT "Module_pkey" PRIMARY KEY ("id")
 );

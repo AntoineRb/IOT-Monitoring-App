@@ -15,7 +15,6 @@ model Module {
   creationDate  DateTime @default(now())
   type          String  @db.VarChar(50)
   name          String  @unique @db.VarChar(100)
-  infoId        Int
   detail        Detail?
   logs          Logs[]
 }
