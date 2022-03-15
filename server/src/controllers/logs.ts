@@ -1,0 +1,27 @@
+import { PrismaClient } from "@prisma/client";
+import { IRouterContext } from "koa-router";
+
+import { ILogs } from "../types/interface";
+import { create } from "../services/logs";
+
+const prisma = new PrismaClient();
+
+export const createController = async ( ctx:IRouterContext ) => {
+    let requestIsOk = false;
+    const data: ILogs = ctx.request.body;
+    await create( data )
+    .then( () => {
+        requestIsOk = true;
+    })
+    .catch( ( e:Error ) => {
+        throw e;  
+    })
+    .finally( () => {
+        prisma.$disconnect;
+    });
+    if ( requestIsOk ) {
+        return "Detail Du module ajouté au logs"
+    }
+    return "Une erreur c'est produite !"
+}
+

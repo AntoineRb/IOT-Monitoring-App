@@ -21,6 +21,5 @@ export interface ILogs {
     unit: string,
     operatingTime: Date,
     moduleState: boolean,
-    dataCount: number,
     moduleId: number
 }
