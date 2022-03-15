@@ -3,5 +3,6 @@ export interface IConfig {
 }
 
 export interface IModule {
-    
+    type: string,
+    name: string
 }
