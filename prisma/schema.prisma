@@ -16,7 +16,7 @@ model Module {
   type          String  @db.VarChar(50)
   name          String  @unique @db.VarChar(100)
   infoId        Int
-  detail        Detail @relation(fields: [infoId], references: [id])
+  detail        Detail?
   logs          Logs[]
 }
 
@@ -26,13 +26,14 @@ model Detail {
   unit            String @db.VarChar(25)
   operatingTime   DateTime
   moduleState     Boolean @default(true)
-  module          Module?
   dataCount       Int @default(0)
+  module          Module  @relation(fields: [moduleId], references: [id])
+  moduleId        Int
 }
 
 model Logs {
   id              Int @id @default(autoincrement())
-  date            DateTime
+  date            DateTime @default(now())
   value           Float
   unit            String @db.VarChar(25)
   operatingTime   DateTime
