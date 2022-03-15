@@ -15,3 +15,12 @@ export interface IDetail {
     dataCount?: number,
     moduleId: number
 }
+
+export interface ILogs {
+    value: number,
+    unit: string,
+    operatingTime: Date,
+    moduleState: boolean,
+    dataCount: number,
+    moduleId: number
+}
