@@ -9,3 +9,7 @@ export const create = async ( data:IDetail ) => {
         data
     })
 }
+
+export const findMany = async () => {
+    return await prisma.detail.findMany();
+}
