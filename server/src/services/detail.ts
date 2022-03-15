@@ -30,3 +30,11 @@ export const update = async ( id:number, data:IDetail ) => {
         data
     })
 }
+
+export const deleteUnique = async ( id:number ) => {
+    return await prisma.detail.delete({
+        where: {
+            id
+        }
+    })
+}
