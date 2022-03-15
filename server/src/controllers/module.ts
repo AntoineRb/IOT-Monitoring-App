@@ -1,6 +1,6 @@
 import { PrismaClient } from "@prisma/client";
 import { IRouterContext } from "koa-router";
-import {create} from "../services/module";
+import {create, findUnique} from "../services/module";
 import { IModule } from "../types/interface";
 
 const prisma = new PrismaClient();
@@ -19,8 +19,17 @@ export const createController = async ( ctx:IRouterContext ) => {
         prisma.$disconnect;
     })
     if ( requestIsOk ) {
-        console.log(' here ');
         return "Module Ajouté à l'interface de monitoring !"
     }
     return "Une erreur c'est produite !"
+}
+
+export const findUniqueController = async ( id:number ) => {
+    return await findUnique( id )
+    .catch( ( e:Error ) => {
+        throw e;  
+    })
+    .finally( () => {
+        prisma.$disconnect;
+    });
 }
