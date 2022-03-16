@@ -14,6 +14,7 @@ const PORT: string = config.port;
 
 app.use( bodyParser() );
 app.use( moduleRoutes.routes() );
+app.use( detailRoutes.routes() );
 app.use( logsRoutes.routes() );
 
 const server: Server = app.listen( PORT, async () => {

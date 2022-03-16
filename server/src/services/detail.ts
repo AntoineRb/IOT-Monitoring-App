@@ -31,6 +31,17 @@ export const update = async ( id:number, data:IDetail ) => {
     })
 }
 
+export const updateManyOperatingTime = async ( moduleState:boolean, operatingTime:Date ) => {
+    return await prisma.detail.updateMany({
+        where: {
+            moduleState
+        },
+        data: {
+            operatingTime
+        }
+    })
+}
+
 export const deleteUnique = async ( id:number ) => {
     return await prisma.detail.delete({
         where: {
