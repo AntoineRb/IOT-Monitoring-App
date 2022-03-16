@@ -9,6 +9,8 @@ export interface IModule {
 
 export interface IDetail {
     value: number,
+    minValue: number,
+    maxValue: number,
     unit: string,
     operatingTime?: Date,
     moduleState?: boolean,
@@ -18,6 +20,8 @@ export interface IDetail {
 
 export interface ILogs {
     value: number,
+    minValue: number,
+    maxValue: number,
     unit: string,
     operatingTime: Date,
     moduleState: boolean,

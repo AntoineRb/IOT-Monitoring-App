@@ -22,6 +22,8 @@ model Module {
 model Detail {
   id              Int @id @default(autoincrement())
   value           Float
+  minValue        Float
+  maxValue        Float
   unit            String @db.VarChar(25)
   operatingTime   DateTime @default(now())
   moduleState     Boolean @default(true)
@@ -34,6 +36,8 @@ model Logs {
   id              Int @id @default(autoincrement())
   date            DateTime @default(now())
   value           Float
+  minValue        Float
+  maxValue        Float
   unit            String @db.VarChar(25)
   operatingTime   DateTime
   moduleState     Boolean 
