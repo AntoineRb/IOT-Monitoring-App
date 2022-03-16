@@ -17,3 +17,11 @@ export const findMany = async ( moduleId:number ) => {
         }
     })
 }
+
+export const findFirst = async ( moduleId:number ) => {
+    return await prisma.logs.findFirst({
+        where: {
+            moduleId
+        }
+    })
+}
