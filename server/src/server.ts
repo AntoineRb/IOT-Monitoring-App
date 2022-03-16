@@ -1,4 +1,5 @@
 import Koa from "koa";
+import cors from "koa2-cors";
 import { type Server } from "http";
 
 import config from "./config";
@@ -13,6 +14,11 @@ const app = new Koa();
 const PORT: string = config.port;
 
 app.use( bodyParser() );
+app.use(
+    cors({
+        origin: '*'
+    })
+);
 app.use( moduleRoutes.routes() );
 app.use( detailRoutes.routes() );
 app.use( logsRoutes.routes() );
