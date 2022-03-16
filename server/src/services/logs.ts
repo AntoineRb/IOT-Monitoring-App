@@ -9,3 +9,11 @@ export const create = async ( data:ILogs ) => {
         data
     });
 }
+
+export const findMany = async ( moduleId:number ) => {
+    return await prisma.logs.findMany({
+        where: {
+            moduleId
+        }
+    })
+}

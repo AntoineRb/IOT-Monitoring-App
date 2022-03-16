@@ -2,7 +2,7 @@ import { PrismaClient } from "@prisma/client";
 import { IRouterContext } from "koa-router";
 
 import { ILogs } from "../types/interface";
-import { create } from "../services/logs";
+import { create, findMany } from "../services/logs";
 
 const prisma = new PrismaClient();
 
@@ -23,5 +23,15 @@ export const createController = async ( ctx:IRouterContext ) => {
         return "Detail Du module ajouté au logs"
     }
     return "Une erreur c'est produite !"
+}
+
+export const findManyController = async ( moduleId:number ) => {
+    return await findMany( moduleId )
+    .catch( ( e:Error ) => {
+        throw e;  
+    })
+    .finally( () => {
+        prisma.$disconnect;
+    });
 }
 
