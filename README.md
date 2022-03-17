@@ -8,7 +8,7 @@
 * ```Typescript``` : Pour renforcer la solidité du code en respectant un ```typage stict```.
 
 **Frontend** :
-* A Définir ...
+* ```React``` : pour la création de composants ainsi que l'utilisation du DOM virtuel dans le but de créer une single page application.
 
 **Backend** :
 * ```NodeJS``` :
