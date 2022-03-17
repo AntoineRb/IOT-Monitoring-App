@@ -3,6 +3,8 @@ export interface IConfig {
 }
 
 export interface IModule {
+    id?: number,
+    creationDate?: Date,
     type: string,
     name: string
 }
