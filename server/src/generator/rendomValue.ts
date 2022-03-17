@@ -1,5 +1,3 @@
-import * as types from "../types/response";
-
 export type TGetRandomValue = (min: number, max: number) => number;
 
 export const getRandomValue:TGetRandomValue = ( min:number, max:number ) => {
