@@ -2,7 +2,6 @@ import { findMany as findAllModule, findUnique as findModule } from "../services
 import { findUnique as findDetail, update as updateDetail } from "../services/detail";
 import { IDetail, IModule } from "../types/interface";
 import { getRandomValue } from "./rendomValue";
-import { getDate } from "./date";
 
 async function toggleRandomModuleState () {
     const allModules: IModule[] = await findAllModule();

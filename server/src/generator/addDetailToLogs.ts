@@ -1,6 +1,7 @@
-import { findUnique as findDetail, update as updateDetail } from "../services/detail";
+import { findUnique as findDetail } from "../services/detail";
 import { create as createLog } from "../services/logs";
 import { IDetail } from "../types/interface";
+import incrementDataCount from "./incrementDataCount";
 
 async function  addDetailToLogs ( moduleID:number ) {
     const detail:IDetail | null = await findDetail( moduleID );
@@ -15,6 +16,8 @@ async function  addDetailToLogs ( moduleID:number ) {
         operatingTime: detail.operatingTime,
         moduleState: detail.moduleState,
         moduleId: detail.moduleId
+    }).then(() => {
+        incrementDataCount( detail );
     });
     return true;
 }
