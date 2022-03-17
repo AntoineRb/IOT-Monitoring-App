@@ -15,6 +15,8 @@
     * ```Koa``` ( framework ) : ```léger et modulable``` car on installe seulement les dépendances que l'on utilise.
 * ```ORM``` :
     * Prisma : Pour la Crétion des models de la ```BDD```, créer un ```CRUD``` facilement.
+* ```Base de données``` :
+    * ```Postgresql``` : Solide système de gestion de base de données relationel et non relationel.
      
 
 
