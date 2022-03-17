@@ -10,6 +10,8 @@ import moduleRoutes from "./routes/module";
 import detailRoutes from "./routes/detail";
 import logsRoutes from "./routes/logs";
 
+import dataGenerator from './generator/dataGenerator'
+
 const app = new Koa();
 const PORT: string = config.port;
 
@@ -29,3 +31,8 @@ const server: Server = app.listen( PORT, async () => {
 .on( "error", ( e:Error ) => {
     console.error( e );
 });
+
+// dataGenerator Script Automation
+setInterval(() => {         
+    dataGenerator();
+}, 30000);
