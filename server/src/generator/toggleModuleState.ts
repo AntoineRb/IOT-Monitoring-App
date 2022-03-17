@@ -3,8 +3,7 @@ import { findUnique as findDetail, update as updateDetail } from "../services/de
 import { IDetail, IModule } from "../types/interface";
 import { getRandomValue } from "./rendomValue";
 
-async function toggleRandomModuleState () {
-    const allModules: IModule[] = await findAllModule();
+async function toggleRandomModuleState ( allModules: IModule[] ) {
     const moduleID: number = getRandomValue( 1, allModules.length );
     const module: IModule | null = await findModule( moduleID );
     if ( module === null ) {

@@ -3,8 +3,7 @@ import { create as createLog } from "../services/logs";
 import { IDetail } from "../types/interface";
 import incrementDataCount from "./incrementDataCount";
 
-async function  addDetailToLogs ( moduleID:number ) {
-    const detail:IDetail | null = await findDetail( moduleID );
+async function  addDetailToLogs ( detail:IDetail ) {
     if ( detail?.operatingTime === undefined || detail.moduleState === undefined) {
         return false;
     }
