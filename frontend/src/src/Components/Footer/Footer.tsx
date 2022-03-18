@@ -1,13 +1,12 @@
 import * as React from 'react';
+import './Footer.scss';
 
-interface IFooterProps {
-}
 
-const Footer: React.FunctionComponent<IFooterProps> = (props) => {
+const Footer: React.FunctionComponent = () => {
     return (
-        <>
-          
-        </>
+        <footer>
+            <h3>Made By AR-dev</h3>
+        </footer>
     );
 };
 
