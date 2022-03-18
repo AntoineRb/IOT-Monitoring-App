@@ -1,11 +1,17 @@
 import React, { useEffect, useState } from 'react';
-import { IModule } from './Types/interface';
+import { IModule, IDetail } from './Types/interface';
 import './App.scss';
 import Footer from './Components/Footer/Footer';
 import NavBar from './Components/NavBar/NavBar';
 import Router from './Router/Router';
 
+// Request
+import getModulesList from './services/getModulesList';
+import getDetailsList from './services/getDetailsList';
+
 function App() {
+
+  // To Get All Modules
   const [ modulesList, setAllModules ]  = useState<IModule>();
   const setModulesListState = ( newModulesList: IModule | undefined ) => {
     if ( newModulesList !== undefined ) {
@@ -16,27 +22,39 @@ function App() {
       console.error(`Modules.tsx: The value type expected is IModule but the actual type is ${unexpectedType}`);
     }
   }
-
   useEffect(() => {
-    const getModulesList =  async() => {
-      await fetch('http://localhost:8080/module/all', { // Change Later For Base URL
-        method: "GET",
-        headers: {
-            "Content-Type":  "application/json; charset=UTF-8"
-        }
-      })
-      .then( response => response.json() )
-      .then(( response ) => {
-          setModulesListState( response );
-          console.log( response );
-      })
-      .catch(( err:Error ) => {
-          throw err;
-      });
+    window.addEventListener('load', async () => await getModulesList( setModulesListState ) );     
+    return () => {
+      window.removeEventListener('load', async () => await getModulesList );
     }
-    window.addEventListener('load', async () => await getModulesList() );     
-    return () => window.removeEventListener('load', getModulesList );
   }, []);
+
+  // To Get All Modules Details
+  const [ detailsList, setDetailsList ]  = useState<IDetail>();
+  const setDetailsListState = ( newDetailsList: IDetail | undefined ) => {
+    if ( newDetailsList !== undefined ) {
+      setDetailsList( newDetailsList );
+    } 
+    else {
+      const unexpectedType = typeof newDetailsList;
+      console.error(`Details.tsx: The value type expected is IDetail but the actual type is ${unexpectedType}`);
+    }
+  }
+  const clg = ( data:IDetail | undefined ) => {
+    console.log(data);
+  }
+
+  // Refresh Details List  
+  useEffect(() => {
+    const refreshDetailsList = setInterval( async () => {
+      await getDetailsList( setDetailsListState );   
+    }, 10000);
+    return () => {
+      window.clearInterval( refreshDetailsList );
+    }
+  }, []);
+
+  
 
   return (
     <div className="App">
