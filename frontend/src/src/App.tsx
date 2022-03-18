@@ -1,11 +1,13 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import './App.scss';
+import NavBar from './Components/NavBar/NavBar';
+import Router from './Router/Router';
 
 function App() {
   return (
     <div className="App">
-
+      <NavBar/>
+      <Router />
     </div>
   );
 }
