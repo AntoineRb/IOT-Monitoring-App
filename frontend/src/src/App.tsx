@@ -9,11 +9,13 @@ import Router from './Router/Router';
 import getModulesList from './services/getModulesList';
 import getDetailsList from './services/getDetailsList';
 
+import { MODULE_INITIAL_STATE, DETAIL_INITIAL_STATE } from "./Types/initialState"
+
 function App() {
 
   // To Get All Modules
-  const [ modulesList, setAllModules ]  = useState<IModule>();
-  const setModulesListState = ( newModulesList: IModule | undefined ) => {
+  const [ modulesList, setAllModules ]  = useState<IModule[]>([MODULE_INITIAL_STATE]);
+  const setModulesListState = (newModulesList: IModule[]) => {
     if ( newModulesList !== undefined ) {
       setAllModules( newModulesList );
     } 
@@ -24,7 +26,7 @@ function App() {
   }
   useEffect(() => {
     const refreshModulesList = setInterval( async () => {
-      await getModulesList( setAllModules );   
+      await getModulesList( setModulesListState );   
     }, 10000);
     return () => {
       window.clearInterval( refreshModulesList );
@@ -32,14 +34,14 @@ function App() {
   }, []);
 
   // To Get All Modules Details
-  const [ detailsList, setDetailsList ]  = useState<IDetail>();
-  const setDetailsListState = ( newDetailsList: IDetail | undefined ) => {
+  const [ detailsList, setDetailsList ]  = useState<IDetail[]>([DETAIL_INITIAL_STATE]);
+  const setDetailsListState = ( newDetailsList: IDetail[] ) => {
     if ( newDetailsList !== undefined ) {
       setDetailsList( newDetailsList );
     } 
     else {
       const unexpectedType = typeof newDetailsList;
-      console.error(`App.tsx: The value type expected is IDetail but the actual type is ${unexpectedType}`);
+      console.error(`App.tsx: The value type expected is IDetail[] but the actual type is ${unexpectedType}`);
     }
   }
   // Refresh Details List  
@@ -52,7 +54,10 @@ function App() {
     }
   }, []);
 
-  const getFreshState = ( detailsList: IModule | IDetail | undefined ) => {
+  const getModulesListState = ( detailsList: IModule[]) => {
+    return detailsList;
+  }
+  const getDetailsListState = ( detailsList: IDetail[] ) => {
     return detailsList;
   }
 
@@ -62,8 +67,8 @@ function App() {
     <div className="App">
       <NavBar/>
         <Router 
-        modulesList={getFreshState(modulesList)}
-        detailsList={getFreshState(detailsList)}/>
+        modulesList={getModulesListState(modulesList)}
+        detailsList={getDetailsListState(detailsList)}/>
       <Footer />
     </div>
   );

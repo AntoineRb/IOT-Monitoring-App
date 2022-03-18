@@ -5,8 +5,8 @@ import Modules from '../Containers/Modules/Modules';
 import { IDetail, IModule } from '../Types/interface';
 
 interface IRouterProps {
-  modulesList: IModule | IDetail | undefined,
-  detailsList: IModule | IDetail | undefined
+  modulesList: IModule[],
+  detailsList: IDetail[]
 }
 
 const Router: React.FunctionComponent<IRouterProps> = ( props ) => {

@@ -4,19 +4,18 @@ import { IDetail, IModule } from '../../Types/interface';
 import ModulesTable from "./ModulesTable/ModulesTable"
 
 interface IModulesProps {
-  modulesList: IModule | IDetail | undefined,
-  detailsList: IModule | IDetail | undefined
+  modulesList: IModule[],
+  detailsList: IDetail[]
 }
 
 const Modules: React.FunctionComponent<IModulesProps> = ( props ) => {
-  console.log( 'In Modules Component :' )
-  console.log( props.modulesList );
-  console.log( props.detailsList )
   return (
     <main>
       <section>
         <h1>Modules page</h1>
-        <ModulesTable />
+        <ModulesTable 
+        modulesList={props.modulesList}
+        detailsList={props.detailsList}/>
       </section>
     </main>
   );
