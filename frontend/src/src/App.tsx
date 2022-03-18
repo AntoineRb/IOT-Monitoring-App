@@ -14,10 +14,10 @@ import { MODULE_INITIAL_STATE, DETAIL_INITIAL_STATE } from "./Types/initialState
 function App() {
 
   // To Get All Modules
-  const [ modulesList, setAllModules ]  = useState<IModule[]>([MODULE_INITIAL_STATE]);
+  const [ modulesList, setModulesList ]  = useState<IModule[]>([MODULE_INITIAL_STATE]);
   const setModulesListState = (newModulesList: IModule[]) => {
     if ( newModulesList !== undefined ) {
-      setAllModules( newModulesList );
+      setModulesList( newModulesList );
     } 
     else {
       const unexpectedType = typeof newModulesList;

@@ -3,6 +3,8 @@ import { IDetail, IModule } from '../../Types/interface';
 
 import ModulesTable from "./ModulesTable/ModulesTable"
 
+import "./Modules.scss";
+
 interface IModulesProps {
   modulesList: IModule[],
   detailsList: IDetail[]
@@ -11,8 +13,8 @@ interface IModulesProps {
 const Modules: React.FunctionComponent<IModulesProps> = ( props ) => {
   return (
     <main>
-      <section>
-        <h1>Modules page</h1>
+      <section className='modules-page'>
+        <h1>Modules :</h1>
         <ModulesTable 
         modulesList={props.modulesList}
         detailsList={props.detailsList}/>

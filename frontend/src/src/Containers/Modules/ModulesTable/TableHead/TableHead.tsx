@@ -1,9 +1,7 @@
 import * as React from 'react';
+import './TableHead.scss'
 
-interface ITableHeadProps {
-}
-
-const TableHead: React.FunctionComponent<ITableHeadProps> = (props) => {
+const TableHead: React.FunctionComponent = (props) => {
     return (
         <thead className='table-head'>
             <tr>
@@ -11,7 +9,6 @@ const TableHead: React.FunctionComponent<ITableHeadProps> = (props) => {
                 <th>Name</th>
                 <th>State</th>
                 <th>Launched / stop At</th>
-                <th>Orerating Time</th>
                 <th>Value</th>
                 <th>Unit</th>
                 <th className='show-details-head'>Show Details</th>

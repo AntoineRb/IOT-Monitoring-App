@@ -1,15 +1,42 @@
 import * as React from 'react';
+import { NavLink } from 'react-router-dom';
 import { IDetail, IModule } from '../../../../Types/interface';
 
+import './TableRow.scss';
+
 interface ITableRowProps {
-    modulesList: IModule[],
-    detailsList: IDetail[]
+    module: IModule,
+    detail: IDetail
 }
 
 const TableRow: React.FunctionComponent<ITableRowProps> = (props) => {
+    
+    let module: IModule = props.module["module"];
+    let detail: IDetail = props.detail["detail"]
+
     return (
         <>
-          
+            <tr className={`table-row ${detail.moduleState ? '' : 'error'}`}>
+                <td className='col-dark module-type'>
+                    {module.type}
+                </td>
+                <td className='col-light'>
+                    {module.name}
+                </td>
+                <td className='col-dark state'>
+                    {detail.moduleState ? "ON" : "OFF"}
+                </td>
+                <td className='col-light'>
+                    {detail.operatingTime}
+                </td>
+                <td className='col-dark'>
+                    {detail.value}
+                </td>
+                <td className='col-light'>
+                    {detail.unit}
+                </td>
+                <td className='btn-container col-dark'><button>Show Details</button></td>
+            </tr>
         </>
     );
 };
