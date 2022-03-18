@@ -1,13 +1,14 @@
 import * as React from 'react';
+import { Routes, Route } from 'react-router-dom';
 
-interface IRouterProps {
-}
+import Modules from '../Containers/Modules/Modules';
 
-const Router: React.FunctionComponent<IRouterProps> = (props) => {
+const Router: React.FunctionComponent = () => {
     return (
-        <>
-          
-        </>
+        <Routes>
+          <Route path='/' element={<Modules />}/>
+          <Route path='/add' element={<Modules />}/>
+        </Routes>
     );
 };
 
