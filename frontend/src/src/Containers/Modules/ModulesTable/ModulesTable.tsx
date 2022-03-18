@@ -1,14 +1,17 @@
 import * as React from 'react';
 
+import TableHead from './TableHead/TableHead';
+import './ModulesTable.scss';
+
 interface ITableProps {
 }
 
-const Table: React.FunctionComponent<ITableProps> = (props) => {
+const ModulesTable: React.FunctionComponent<ITableProps> = (props) => {
     return (
-        <table>
-            
+        <table className='modules-list-table'>
+            <TableHead />
         </table>
     );
 };
 
-export default Table;
+export default ModulesTable;
