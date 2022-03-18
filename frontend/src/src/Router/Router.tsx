@@ -2,12 +2,20 @@ import * as React from 'react';
 import { Routes, Route } from 'react-router-dom';
 
 import Modules from '../Containers/Modules/Modules';
+import { IDetail, IModule } from '../Types/interface';
 
-const Router: React.FunctionComponent = () => {
+interface IRouterProps {
+  modulesList: IModule | IDetail | undefined,
+  detailsList: IModule | IDetail | undefined
+}
+
+const Router: React.FunctionComponent<IRouterProps> = ( props ) => {
     return (
         <Routes>
-          <Route path='/' element={<Modules />}/>
-          <Route path='/add' element={<Modules />}/>
+          <Route path='/' element={<Modules 
+          modulesList={props.modulesList}
+          detailsList={props.detailsList}/>}/>
+          {/* <Route path='/add' element={<Modules />}/> */}
         </Routes>
     );
 };

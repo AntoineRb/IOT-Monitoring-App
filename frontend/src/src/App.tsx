@@ -19,13 +19,15 @@ function App() {
     } 
     else {
       const unexpectedType = typeof newModulesList;
-      console.error(`Modules.tsx: The value type expected is IModule but the actual type is ${unexpectedType}`);
+      console.error(`App.tsx: The value type expected is IModule but the actual type is ${unexpectedType}`);
     }
   }
   useEffect(() => {
-    window.addEventListener('load', async () => await getModulesList( setModulesListState ) );     
+    const refreshModulesList = setInterval( async () => {
+      await getModulesList( setAllModules );   
+    }, 10000);
     return () => {
-      window.removeEventListener('load', async () => await getModulesList );
+      window.clearInterval( refreshModulesList );
     }
   }, []);
 
@@ -37,13 +39,9 @@ function App() {
     } 
     else {
       const unexpectedType = typeof newDetailsList;
-      console.error(`Details.tsx: The value type expected is IDetail but the actual type is ${unexpectedType}`);
+      console.error(`App.tsx: The value type expected is IDetail but the actual type is ${unexpectedType}`);
     }
   }
-  const clg = ( data:IDetail | undefined ) => {
-    console.log(data);
-  }
-
   // Refresh Details List  
   useEffect(() => {
     const refreshDetailsList = setInterval( async () => {
@@ -54,12 +52,18 @@ function App() {
     }
   }, []);
 
+  const getFreshState = ( detailsList: IModule | IDetail | undefined ) => {
+    return detailsList;
+  }
+
   
 
   return (
     <div className="App">
       <NavBar/>
-        <Router />
+        <Router 
+        modulesList={getFreshState(modulesList)}
+        detailsList={getFreshState(detailsList)}/>
       <Footer />
     </div>
   );

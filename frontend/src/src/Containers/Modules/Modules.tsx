@@ -1,9 +1,15 @@
 import React, { useEffect, useState } from 'react';
-import { IModule } from '../../Types/interface';
+import { IDetail, IModule } from '../../Types/interface';
 
+interface IModulesProps {
+  modulesList: IModule | IDetail | undefined,
+  detailsList: IModule | IDetail | undefined
+}
 
-const Modules: React.FunctionComponent = () => {
-
+const Modules: React.FunctionComponent<IModulesProps> = ( props ) => {
+  console.log( 'In Modules Component :' )
+  console.log( props.modulesList );
+  console.log( props.detailsList )
   return (
     <main>
       <section>

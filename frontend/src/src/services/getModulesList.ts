@@ -8,7 +8,6 @@ const getModulesList =  async ( setValueFunc: any ) => {
     .then( response => response.json() )
     .then(( response ) => {
         setValueFunc( response );
-        console.log( response );
     })
     .catch(( err:Error ) => {
         throw err;
