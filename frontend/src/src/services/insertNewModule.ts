@@ -10,13 +10,6 @@ interface IModuleToCreate {
     name: string
 }
 
-interface IDetailsToCreate {
-    minValue: number,
-    maxValue: number,
-    unit: string,
-    moduleId: number
-}
-
 
 const insertNewModule =  async ( data: IData ) => {
     let moduleIsCreate: boolean = false;
