@@ -35,7 +35,11 @@ const TableRow: React.FunctionComponent<ITableRowProps> = (props) => {
                 <td className='col-light'>
                     {props.detail.unit}
                 </td>
-                <td className='btn-container col-dark'><button>Show Details</button></td>
+                <td className='btn-container col-dark'>
+                    <NavLink to={`/module/detail/${module.id}`} >
+                        Show Details
+                    </NavLink>
+                </td>
             </tr>
         </>
     );

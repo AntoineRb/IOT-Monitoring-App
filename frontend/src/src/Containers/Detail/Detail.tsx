@@ -6,7 +6,7 @@ interface IDetailProps {
 const Detail: React.FunctionComponent<IDetailProps> = (props) => {
     return (
         <>
-          
+          <h1>Detail</h1>
         </>
     );
 };
