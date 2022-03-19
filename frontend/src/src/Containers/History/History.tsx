@@ -5,9 +5,11 @@ interface IHistoryProps {
 
 const History: React.FunctionComponent<IHistoryProps> = (props) => {
     return (
-        <>
-          <h1>History</h1>
-        </>
+        <main>
+          <section>
+            
+          </section>
+        </main>
     );
 };
 
