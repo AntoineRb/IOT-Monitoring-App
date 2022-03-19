@@ -1,7 +1,7 @@
 import { IDetail, IModule } from "../Types/interface";
 
 interface IData {
-    module: IModuleToCreate
+    module: IModule
     detail: IDetail
 }
 
