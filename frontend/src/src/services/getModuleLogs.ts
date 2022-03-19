@@ -1,4 +1,4 @@
-const getDetailsList =  async ( moduleId:number, setValueFunc: any ) => {
+const getModulesLogs =  async ( moduleId:number, setValueFunc: any ) => {
     await fetch(`http://localhost:8080/logs/all/${moduleId}`, { // Change Later For Base URL
         method: "GET",
         headers: {
@@ -13,4 +13,4 @@ const getDetailsList =  async ( moduleId:number, setValueFunc: any ) => {
         throw err;
     });
 }
-export default getDetailsList;
+export default getModulesLogs;

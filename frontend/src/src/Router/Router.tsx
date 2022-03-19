@@ -22,7 +22,7 @@ const Router: React.FunctionComponent<IRouterProps> = ( props ) => {
           detailsList={props.detailsList}/>}/>
           <Route path='/add' element={<AddModule />}/>
           <Route path='/module/detail/:id' element={<Detail />}/>
-          <Route path='/module/logs/:id' element={<History />}/>
+          <Route path='/module/history/:id' element={<History />}/>
         </Routes>
     );
 };
