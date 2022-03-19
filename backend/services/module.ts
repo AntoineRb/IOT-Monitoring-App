@@ -22,6 +22,14 @@ export const findUnique = async ( id:number ) => {
     })
 }
 
+export const findModuleWithName = async ( name:string ) => {
+    return await prisma.module.findUnique({
+        where: {
+            name
+        }
+    })
+}
+
 export const update = async ( id:number, data: IModule ) => {
     return await prisma.module.update({
         where: {

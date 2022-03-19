@@ -11,10 +11,16 @@ router.get( '/module/all', async ( ctx:IRouterContext ) => {
     ctx.body = await crud.findManyController();
 })
 
+router.get( '/module/name/:name', async ( ctx:IRouterContext ) => {
+    const name: string = ctx.params.name;
+    ctx.body = await crud.findModuleWithNameController( name );
+})
+
 router.get( '/module/:id', async ( ctx:IRouterContext ) => {
     const id: number = +ctx.params.id;
     ctx.body = await crud.findUniqueController( id );
 })
+
 
 router.patch( '/module/update/:id', async ( ctx:IRouterContext ) => {
     const id:number = +ctx.params.id;
