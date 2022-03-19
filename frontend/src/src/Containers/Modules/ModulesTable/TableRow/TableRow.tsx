@@ -12,11 +12,11 @@ interface ITableRowProps {
 const TableRow: React.FunctionComponent<ITableRowProps> = (props) => {
     
     let module: IModule = props.module["module"];
-    let detail: IDetail = props.detail["detail"]
+    let detail: IDetail = props.detail;
 
     return (
         <>
-            <tr className={`table-row ${detail.moduleState ? '' : 'error'}`}>
+            <tr className={`table-row ${props.detail.moduleState ? '' : 'error'}`}>
                 <td className='col-dark module-type'>
                     {module.type}
                 </td>
@@ -24,16 +24,16 @@ const TableRow: React.FunctionComponent<ITableRowProps> = (props) => {
                     {module.name}
                 </td>
                 <td className='col-dark state'>
-                    {detail.moduleState ? "ON" : "OFF"}
+                    {props.detail.moduleState ? "ON" : "OFF"}
                 </td>
                 <td className='col-light'>
-                    {detail.operatingTime}
+                    {props.detail.operatingTime}
                 </td>
                 <td className='col-dark'>
-                    {detail.value}
+                    {props.detail.value}
                 </td>
                 <td className='col-light'>
-                    {detail.unit}
+                    {props.detail.unit}
                 </td>
                 <td className='btn-container col-dark'><button>Show Details</button></td>
             </tr>
@@ -41,4 +41,5 @@ const TableRow: React.FunctionComponent<ITableRowProps> = (props) => {
     );
 };
 
+export type TypeTableRow = typeof TableRow;
 export default TableRow;

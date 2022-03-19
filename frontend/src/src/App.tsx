@@ -25,6 +25,7 @@ function App() {
     }
   }
   useEffect(() => {
+    getModulesList( setModulesListState ); 
     const refreshModulesList = setInterval( async () => {
       await getModulesList( setModulesListState );   
     }, 10000);
@@ -46,6 +47,7 @@ function App() {
   }
   // Refresh Details List  
   useEffect(() => {
+    getDetailsList( setDetailsListState );
     const refreshDetailsList = setInterval( async () => {
       await getDetailsList( setDetailsListState );   
     }, 10000);
