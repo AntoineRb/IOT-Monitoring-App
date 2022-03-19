@@ -1,47 +1,29 @@
-import * as React from 'react';
+import React, {useState, useEffect} from 'react';
 import { NavLink } from 'react-router-dom';
-import { IDetail, IModule } from '../../../../Types/interface';
+import { LOGS_INITIAL_STATE } from '../../../../Types/initialState';
+import { ILogs } from '../../../../Types/interface';
 
 import './TableRow.scss';
 
 interface ITableRowProps {
-    module: IModule,
-    detail: IDetail
+    log: ILogs,
+    calculTime: (pastDate: string, actualDate: string) => string
 }
 
 const TableRow: React.FunctionComponent<ITableRowProps> = (props) => {
-    
-    let module: IModule = props.module["module"];
-    let detail: IDetail = props.detail;
 
+
+    let log:ILogs = props.log;
+    console.log(props.log);
     return (
-        <>
-            <tr className={`table-row ${props.detail.moduleState ? '' : 'error'}`}>
-                <td className='col-dark module-type'>
-                    {module.type}
-                </td>
-                <td className='col-light'>
-                    {module.name}
-                </td>
-                <td className='col-dark state'>
-                    {props.detail.moduleState ? "ON" : "OFF"}
-                </td>
-                <td className='col-light'>
-                    {props.detail.operatingTime}
-                </td>
-                <td className='col-dark'>
-                    {props.detail.value}
-                </td>
-                <td className='col-light'>
-                    {props.detail.unit}
-                </td>
-                <td className='btn-container col-dark'>
-                    <NavLink to={`/module/detail/${module.id}`} >
-                        Show Details
-                    </NavLink>
-                </td>
-            </tr>
-        </>
+        <tr>
+            <td>{log.moduleState === true ? "ON" : "OFF"}</td>
+            <td>{log.moduleState === true ? log.value : "X"}</td>
+            <td>{log.unit}</td>
+            { (log.operatingTime !== undefined) &&
+                <td>{props.calculTime( log.operatingTime.toLocaleString(), new Date().toJSON() )}mn</td>
+            }
+        </tr>
     );
 };
 

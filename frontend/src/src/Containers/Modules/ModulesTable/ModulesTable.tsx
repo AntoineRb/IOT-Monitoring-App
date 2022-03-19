@@ -4,8 +4,7 @@ import TableHead from './TableHead/TableHead';
 import './ModulesTable.scss';
 
 import { IDetail, IModule } from '../../../Types/interface';
-import TableRow, { TypeTableRow } from './TableRow/TableRow';
-import { cp } from 'fs/promises';
+import TableRow from './TableRow/TableRow';
 
 
 interface ITableProps {
@@ -16,7 +15,6 @@ interface ITableProps {
 const ModulesTable: React.FunctionComponent<ITableProps> = (props) => {
 
     let modulesListMap = new Map();
-    let detailsListMap = new Map();
     let tableRowArr = []
 
     if ( props.modulesList !== undefined && props.detailsList !== undefined ) {
@@ -27,15 +25,11 @@ const ModulesTable: React.FunctionComponent<ITableProps> = (props) => {
             modulesListMap.set( module.id, {
                 module
             })
-            // console.log(module);
         }
         for ( let detail of props.detailsList ) {
             if ( detail.moduleId === 0 ) {
                 continue;
             }
-            detailsListMap.set( detail.moduleId, {
-                detail
-            })
             console.log( detail )
             if ( detail.moduleId !== 0) {
                 let moduleID:number = detail.moduleId;
@@ -43,7 +37,7 @@ const ModulesTable: React.FunctionComponent<ITableProps> = (props) => {
                 tableRowArr.push(<TableRow key={moduleID} module={module} detail={detail}/>);
             }
         }
-        console.log( tableRowArr );
+        // console.log( tableRowArr );
     }
 
     const renderRow = () => {
