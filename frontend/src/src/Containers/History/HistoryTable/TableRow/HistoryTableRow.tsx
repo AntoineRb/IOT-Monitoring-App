@@ -28,7 +28,7 @@ const TableRow: React.FunctionComponent<ITableRowProps> = (props) => {
 
             {(log.operatingTime !== undefined) ?
                 <td className='col-light'>
-                    {getTimeBewtweenDate( log.operatingTime.toLocaleString(), new Date().toJSON() )}mn
+                    {getTimeBewtweenDate( log.operatingTime.toLocaleString(), new Date().toJSON() )}
                 </td> :
                 <td>?</td>
             }

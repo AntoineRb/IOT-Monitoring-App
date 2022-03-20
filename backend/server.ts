@@ -35,4 +35,4 @@ const server: Server = app.listen( PORT, async () => {
 // dataGenerator Script Automation
 setInterval(() => {         
     dataGenerator();
-}, 10000);
+}, 40000);

@@ -35,7 +35,7 @@ const History: React.FunctionComponent<IHistoryProps> = (props) => {
     getModulesLogs( moduleId, setLogsListState ); 
     const refreshModulesList = setInterval( async () => {
       await getModulesLogs( moduleId, setLogsListState );
-    }, 60000);
+    }, 10000);
     return () => {
       window.clearInterval( refreshModulesList );
     }
@@ -56,7 +56,7 @@ const History: React.FunctionComponent<IHistoryProps> = (props) => {
             <div className='module-info'>
               <h3>Type : { module == undefined ? '...' : module.type }</h3>
               <h3>Nom : {  module == undefined ? '...' : module.name }</h3>
-              <h3>Données Envoyées : {  logs[moduleId] == undefined ? '...' : props.detailsList[moduleId].dataCount }</h3>
+              <h3>Données Envoyées : {  props.detailsList[moduleId] == undefined ? '...' : props.detailsList[moduleId].dataCount }</h3>
             </div>
           }
           <section className='history-table-section'>

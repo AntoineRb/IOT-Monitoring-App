@@ -2,6 +2,7 @@ import { findMany as findAllModule, findUnique as findModule } from "../services
 import { findUnique as findDetail, update as updateDetail } from "../services/detail";
 import { IDetail, IModule } from "../types/interface";
 import { getRandomValue } from "./rendomValue";
+import addDetailToLogs from "./addDetailToLogs";
 
 async function toggleRandomModuleState ( allModules: IModule[] ) {
     const moduleID: number = getRandomValue( 1, allModules.length );
@@ -24,6 +25,7 @@ async function toggleModuleState ( moduleID:number ) {
     if ( moduleDetail === null ) {
         return false;
     }
+    await addDetailToLogs(moduleDetail);
     await updateDetail( moduleID, {
         value:          moduleDetail.value,
         minValue:       moduleDetail.minValue,

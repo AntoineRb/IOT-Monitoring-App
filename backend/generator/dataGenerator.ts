@@ -8,10 +8,7 @@ import { IDetail, IModule } from "../types/interface";
 
 async function dataGenerator () {
     const allModules: IModule[] = await findAllModule();
-    const toggleRandomModule: boolean = await toggleRandomModuleState( allModules );
-    if ( !toggleRandomModule ) {
-        return false;
-    }
+    toggleRandomModuleState( allModules );
     for ( let module of allModules ) {
         const moduleID: number | undefined = module.id;
         if ( moduleID === undefined ) {

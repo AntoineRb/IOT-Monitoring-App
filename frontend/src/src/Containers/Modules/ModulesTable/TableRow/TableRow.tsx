@@ -5,6 +5,7 @@ import { NavLink } from 'react-router-dom';
 import { IDetail, IModule } from '../../../../Types/interface';
 
 import './TableRow.scss';
+import { formatDate } from '../../../../utils';
 
 interface ITableRowProps {
     module: IModule,
@@ -29,7 +30,7 @@ const TableRow: React.FunctionComponent<ITableRowProps> = (props) => {
                     {props.detail.moduleState ? "ON" : "OFF"}
                 </td>
                 <td className='col-light'>
-                    {props.detail.operatingTime}
+                    {formatDate( new Date(props.detail.operatingTime))}
                 </td>
                 <td className='col-dark'>
                     {props.detail.value}
