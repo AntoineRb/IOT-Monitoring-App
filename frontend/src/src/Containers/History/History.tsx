@@ -6,6 +6,8 @@ import { IDetail, ILogs, IModule } from '../../Types/interface';
 
 import HistoryTable from './HistoryTable/HistoryTable';
 
+import './History.scss';
+
 interface IHistoryProps {
   modulesList: IModule[],
   detailsList: IDetail[]
@@ -42,7 +44,6 @@ const History: React.FunctionComponent<IHistoryProps> = (props) => {
 
     return (
         <main>
-          <section>
             { props.modulesList !== undefined &&
               <div className='module-info'>
                 <h3>Type : { props.modulesList[id] == undefined ? 'X' : props.modulesList[id].id }</h3>
@@ -50,8 +51,11 @@ const History: React.FunctionComponent<IHistoryProps> = (props) => {
                 <h3>Données Envoyées : {  props.detailsList[id] == undefined ? 'X' : props.detailsList[id].dataCount }</h3>
               </div>
             }
-            <HistoryTable 
-            logs={logs}/>
+          <section className='history-table-section'>
+            <div className='table-container'>
+              <HistoryTable 
+              logs={logs}/>
+            </div>
           </section>
         </main>
     );

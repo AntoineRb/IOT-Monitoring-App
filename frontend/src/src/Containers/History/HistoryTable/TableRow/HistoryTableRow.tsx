@@ -2,7 +2,7 @@ import React, {useState, useEffect} from 'react';
 import { ILogs, IModule } from '../../../../Types/interface';
 import Detail from '../../../Detail/Detail';
 
-import './TableRow.scss';
+import './HistoryTableRow.scss';
 
 interface ITableRowProps {
     log: ILogs,

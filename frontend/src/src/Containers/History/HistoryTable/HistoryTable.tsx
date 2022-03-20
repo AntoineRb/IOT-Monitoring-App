@@ -1,12 +1,10 @@
 import React, { ReactElement, useEffect, useState } from 'react';
 
-import TableHead from './TableHead/TableHead';
-import './HistoryTable.scss';
-
 import { ILogs, IModule} from '../../../Types/interface';
-import TableRow from './TableRow/TableRow';
 
-
+import './HistoryTable.scss';
+import TableHead from './TableHead/HistoryTableHead';
+import TableRow from './TableRow/HistoryTableRow';
 
 
 interface ITableProps {
@@ -57,7 +55,7 @@ const HistoryTable: React.FunctionComponent<ITableProps> = (props) => {
     return (
         <table className='modules-list-table'>
             <TableHead />
-            <tbody>
+            <tbody className='history-table-body'>
                 {(tableRowArr.length > 0) &&
                     renderRow()
                 }
