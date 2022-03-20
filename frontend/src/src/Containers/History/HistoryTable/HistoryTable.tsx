@@ -1,7 +1,8 @@
+import React, { useEffect, useState } from 'react';
 import {v4 as uuidv4} from 'uuid';
-import React, { ReactElement, useEffect, useState } from 'react';
 
-import { ILogs, IModule} from '../../../Types/interface';
+import { ILogs} from '../../../Types/interface';
+import { LOGS_INITIAL_STATE } from '../../../Types/initialState';
 
 import './HistoryTable.scss';
 import TableHead from './TableHead/HistoryTableHead';
@@ -14,21 +15,18 @@ interface ITableProps {
 
 const HistoryTable: React.FunctionComponent<ITableProps> = (props) => {
     
+    const[logs, setLogs] = useState<ILogs[]>([LOGS_INITIAL_STATE]);
+
+    useEffect(() => {
+        setLogs( props.logs )
+    }, [props.logs]);
     
-    let logsMap = new Map();
     let tableRowArr = []
 
-    if ( props.logs !== undefined  ) {
-        for ( let log of props.logs ) {
-            if ( log.moduleId === 0 ) {
-                continue;
-            }         
+    if ( logs !==  [LOGS_INITIAL_STATE] ) {
+        for ( let log of logs ) {      
             tableRowArr.unshift(
-            <TableRow 
-            key={uuidv4()} 
-            log={log}
-            />);
-
+            <TableRow key={uuidv4()} log={log}/>);
         }
     }
 
