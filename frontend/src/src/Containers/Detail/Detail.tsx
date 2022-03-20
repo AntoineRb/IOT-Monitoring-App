@@ -1,5 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import { NavLink } from 'react-router-dom';
+import LineChart from '../../Components/Chars/LineChars';
 
 import getUniqueDetail from '../../services/getUniqueDetail';
 import getUniqueModule from '../../services/getUniqueModule';
@@ -56,6 +57,7 @@ const Detail: React.FunctionComponent = () => {
                       </>
                   }
               </div>
+                  {/* <LineChart /> */}
           </section>
         </main>
     );
