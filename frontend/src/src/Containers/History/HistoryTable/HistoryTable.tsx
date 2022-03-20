@@ -23,7 +23,7 @@ const HistoryTable: React.FunctionComponent<ITableProps> = (props) => {
             if ( log.moduleId === 0 ) {
                 continue;
             }         
-            tableRowArr.push(
+            tableRowArr.unshift(
             <TableRow 
             key={uuidv4()} 
             log={log}
