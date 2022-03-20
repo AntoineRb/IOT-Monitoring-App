@@ -18,6 +18,15 @@ export const findMany = async ( moduleId:number ) => {
     })
 }
 
+export const findAllValues = async ( moduleId:number ) => {
+    const data = await prisma.logs.findMany({
+        where: {
+            moduleId
+        }
+    });
+    return data.map( log => log.value );
+}
+
 export const findFirst = async ( moduleId:number ) => {
     return await prisma.logs.findFirst({
         where: {
