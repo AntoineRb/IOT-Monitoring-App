@@ -5,8 +5,8 @@ import { ILogs} from '../../../Types/interface';
 import { LOGS_INITIAL_STATE } from '../../../Types/initialState';
 
 import './HistoryTable.scss';
-import TableHead from './TableHead/HistoryTableHead';
-import TableRow from './TableRow/HistoryTableRow';
+import TableHead from './HistoryTableHead/HistoryTableHead';
+import TableRow from './HistoryTableRow/HistoryTableRow';
 
 
 interface ITableProps {

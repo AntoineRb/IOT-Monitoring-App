@@ -7,7 +7,7 @@ import getUniqueModule from '../../services/getUniqueModule';
 import { DETAIL_INITIAL_STATE, MODULE_INITIAL_STATE } from '../../Types/initialState';
 import { IDetail, IModule } from '../../Types/interface';
 
-import {getIdInParams, getTimeBewtweenDate} from '../../utils';
+import {formatDate, getIdInParams, getTimeBewtweenDate} from '../../utils';
 
 import './Detail.scss';
 
@@ -31,8 +31,7 @@ const Detail: React.FunctionComponent = () => {
     useEffect(() => {
       setInterval(() => {
         if ( detail.operatingTime !== undefined ) {     
-            const newDate = getTimeBewtweenDate( detail.operatingTime.toLocaleString(), new Date().toJSON());
-            setLastUpdate( newDate );
+            setLastUpdate( formatDate( new Date(detail.operatingTime) ) );
         }
       }, 1000);
     }, [detail]);
@@ -50,7 +49,7 @@ const Detail: React.FunctionComponent = () => {
                           <span className='value'>{detail.value}</span> 
                           <span className='unit'>{detail.unit}</span>
                         </p>
-                        <p className='last-info-time'>Mesure effectuée il y a : {lastUpdate}</p>
+                        <p className='last-info-time'>{lastUpdate}</p>
                         <NavLink className="btn-history" to={`/module/history/${detail.moduleId}`}>
                             Historique
                         </NavLink>

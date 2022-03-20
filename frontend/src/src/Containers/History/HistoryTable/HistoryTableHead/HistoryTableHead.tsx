@@ -8,7 +8,7 @@ const TableHead: React.FunctionComponent = (props) => {
                 <th>État de Fonctionnement</th>
                 <th>Mesure</th>
                 <th>Unité</th>
-                <th>Actif depuis </th>
+                <th>Actif / Inactif depuis </th>
                 <th className='capture-date'>Date de Capture:</th>
             </tr>
         </thead>
