@@ -13,10 +13,20 @@ export const getIdInParams = () => {
 export const getTimeBewtweenDate = ( pastDate:string , actualDate:string ) => {
     const past:any = new Date( pastDate );
     const actual:any = new Date( actualDate );
-    const timeInHour = ((( (actual - past) / 1000) / 60) / 60) / 60; // Hour
-    const timeStr = timeInHour
-    .toFixed(2)
-    .toLocaleString()
-    .replace('.', 'H');
-    return timeStr + "mn";
+    const timeInSeconds = (((actual - past) / 1000) / 60); // Seconds
+    const h:string = Math.floor(timeInSeconds / 3600).toString();
+    const m:string = Math.floor(timeInSeconds % 3600 / 60).toString();
+    const s:string = Math.floor(timeInSeconds % 3600 % 60).toString();
+    return h + 'H' + m + 'm' + s + 's' ;
+}
+
+export const formatDate = ( date:Date ) => {
+    return date.toLocaleString( navigator.language, {
+        weekday: 'short',
+        month: 'long', 
+        day: 'numeric', 
+        hour: 'numeric',
+        minute: 'numeric',
+        second: 'numeric'
+    });
 }

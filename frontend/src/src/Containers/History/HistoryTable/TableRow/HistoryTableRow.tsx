@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import {v4 as uuidv4} from 'uuid';
 import { ILogs, IModule } from '../../../../Types/interface';
-import{getTimeBewtweenDate} from '../../../../utils';
+import{getTimeBewtweenDate, formatDate} from '../../../../utils';
 
 import './HistoryTableRow.scss';
 
@@ -33,7 +33,7 @@ const TableRow: React.FunctionComponent<ITableRowProps> = (props) => {
                 <td>?</td>
             }
 
-            <td className='col-dark'>{log.operatingTime}</td>
+            <td className='col-dark'>{formatDate( new Date(log.operatingTime))}</td>
         </tr>
 
     );
