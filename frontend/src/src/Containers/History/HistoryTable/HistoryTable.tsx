@@ -1,3 +1,4 @@
+import {v4 as uuidv4} from 'uuid';
 import React, { ReactElement, useEffect, useState } from 'react';
 
 import { ILogs, IModule} from '../../../Types/interface';
@@ -35,17 +36,15 @@ const HistoryTable: React.FunctionComponent<ITableProps> = (props) => {
         for ( let log of props.logs ) {
             if ( log.moduleId === 0 ) {
                 continue;
-            }
-            
+            }         
             tableRowArr.push(
             <TableRow 
-            key={+log.operatingTime} 
+            key={uuidv4()} 
             log={log} 
             calculTime={getTimeBewtweenDate}
             />);
 
         }
-        // console.log( tableRowArr );
     }
 
     const renderRow = () => {
