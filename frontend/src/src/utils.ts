@@ -17,7 +17,7 @@ export const getTimeBewtweenDate = ( pastDate:string , actualDate:string ) => {
     const h:string = Math.floor(timeInSeconds / 3600).toString();
     const m:string = Math.floor(timeInSeconds % 3600 / 60).toString();
     const s:string = Math.floor(timeInSeconds % 3600 % 60).toString();
-    return h + 'H' + m + 'm' + s + 's' ;
+    return h + 'H:' + m + 'm:' + s + 's' ;
 }
 
 export const formatDate = ( date:Date ) => {

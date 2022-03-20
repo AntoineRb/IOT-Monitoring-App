@@ -1,4 +1,5 @@
 import React, {useState, useEffect} from 'react';
+import { NavLink } from 'react-router-dom';
 
 import getUniqueDetail from '../../services/getUniqueDetail';
 import getUniqueModule from '../../services/getUniqueModule';
@@ -6,7 +7,9 @@ import getUniqueModule from '../../services/getUniqueModule';
 import { DETAIL_INITIAL_STATE, MODULE_INITIAL_STATE } from '../../Types/initialState';
 import { IDetail, IModule } from '../../Types/interface';
 
-import {getIdInParams} from '../../utils';
+import {getIdInParams, getTimeBewtweenDate} from '../../utils';
+
+import './Detail.scss';
 
 const Detail: React.FunctionComponent = () => {
     const [moduleId, setModuleId] = useState<number>(0);
@@ -23,21 +26,36 @@ const Detail: React.FunctionComponent = () => {
     useEffect(() => {
       getUniqueDetail( moduleId, setDetail );
     }, [moduleId]);
+
+    const [lastUpdate, setLastUpdate] = useState<string>("XX:XX:XX");
+    useEffect(() => {
+      setInterval(() => {
+        if ( detail.operatingTime !== undefined ) {     
+            const newDate = getTimeBewtweenDate( detail.operatingTime.toLocaleString(), new Date().toJSON());
+            setLastUpdate( newDate );
+        }
+      }, 1000);
+    }, [detail]);
+
     return (
         <main>
-          <section className='info'>
-              <div className='value-info'>
-                <div>
+          <section className='info-section'>
+              <div className='actual-info'>
                   { module !== MODULE_INITIAL_STATE &&
-                      <p>{module.type}</p>
+                      <p className='type'>{module.type}</p>
                   }
                   { detail !== DETAIL_INITIAL_STATE &&
                       <>
-                        <p>{detail.value}</p>
-                        <p>{detail.unit}</p>
+                        <p className='p-value'> 
+                          <span className='value'>{detail.value}</span> 
+                          <span className='unit'>{detail.unit}</span>
+                        </p>
+                        <p className='last-info-time'>Mesure effectuée il y a : {lastUpdate}</p>
+                        <NavLink className="btn-history" to={`/module/history/${detail.moduleId}`}>
+                            Historique
+                        </NavLink>
                       </>
                   }
-                </div>
               </div>
           </section>
         </main>
