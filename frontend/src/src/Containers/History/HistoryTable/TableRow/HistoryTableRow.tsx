@@ -1,12 +1,12 @@
 import React, {useState, useEffect} from 'react';
 import {v4 as uuidv4} from 'uuid';
 import { ILogs, IModule } from '../../../../Types/interface';
+import{getTimeBewtweenDate} from '../../../../utils';
 
 import './HistoryTableRow.scss';
 
 interface ITableRowProps {
-    log: ILogs,
-    calculTime: (pastDate: string, actualDate: string) => string
+    log: ILogs
 }
 
 const TableRow: React.FunctionComponent<ITableRowProps> = (props) => {
@@ -28,7 +28,7 @@ const TableRow: React.FunctionComponent<ITableRowProps> = (props) => {
 
             {(log.operatingTime !== undefined) ?
                 <td className='col-light'>
-                    {props.calculTime( log.operatingTime.toLocaleString(), new Date().toJSON() )}mn
+                    {getTimeBewtweenDate( log.operatingTime.toLocaleString(), new Date().toJSON() )}mn
                 </td> :
                 <td>?</td>
             }
