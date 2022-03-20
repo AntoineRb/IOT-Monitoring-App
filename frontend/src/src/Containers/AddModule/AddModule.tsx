@@ -16,10 +16,10 @@ const AddModule: React.FunctionComponent<IAddModuleProps> = (props) => {
     const minValue:number = +e.target.minValue.value;
     const maxValue:number = +e.target.maxValue.value;
     if ( type.length > 1 && name.length > 1 && unit.length > 1) {
-      try {
-        type = type.replace(' ', '-');
-        name = name.replace(' ', '-');
-        unit = unit.replace(' ', '-');
+      try { // replace whitespace
+        type = type.replace(/\s/g, '-');
+        name = name.replace(/\s/g, '-');
+        unit = unit.replace(/\s/g, '-');
       }
       catch(err) {
         throw err;
@@ -37,12 +37,16 @@ const AddModule: React.FunctionComponent<IAddModuleProps> = (props) => {
         unit,
         moduleId: 0
       }
-      alert('Module Ajouté à la liste');
-      console.log( detail )
-      insertNewModule({module, detail});
+      insertNewModule({module, detail})
+      .then( () => alert('Module Ajouté à la liste'));
     } else {
       alert('Une erreur est survenue veuillez remplit correctement le formulaire ci-dessous')
     }
+    e.target.type.value = "";
+    e.target.name.value = "";
+    e.target.unit.value = "";
+    e.target.minValue.value = "";
+    e.target.maxValue.value = "";
   }
 
   return (
