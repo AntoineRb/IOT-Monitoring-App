@@ -10,25 +10,6 @@
     .state {
         color: #22bb33;
     }
-    .btn-container {
-        border-right: none;
-        a {
-            text-decoration: none;
-            width: 100%;
-            height: 4vh;
-            padding: 0.5em;
-            background-color: #0275d8;
-            border-radius: 2em;
-            cursor: pointer;
-            transition-duration: 300ms;
-            font-size: 1em;
-            font-weight: 600;
-            color: rgb(245,245,245);
-        }
-        a:hover {
-            background-color: #288be2;
-        }
-    }
     .col-dark {
         background-color: rgb(245,245,245);
     }

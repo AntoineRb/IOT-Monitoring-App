@@ -12,12 +12,14 @@ interface IModulesProps {
 
 const Modules: React.FunctionComponent<IModulesProps> = ( props ) => {
   return (
-    <main>
-      <section className='modules-page'>
-        <h1>Modules :</h1>
-        <ModulesTable 
-        modulesList={props.modulesList}
-        detailsList={props.detailsList}/>
+    <main className='modules-page'>
+      <h1>Modules :</h1>
+      <section className='modules-table-section'>
+        <div className='table-container'>
+          <ModulesTable 
+          modulesList={props.modulesList}
+          detailsList={props.detailsList}/>
+        </div>
       </section>
     </main>
   );

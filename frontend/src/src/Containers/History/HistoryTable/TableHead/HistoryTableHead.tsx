@@ -1,17 +1,15 @@
 import * as React from 'react';
-import './TableHead.scss'
+import './HistoryTableHead.scss';
 
 const TableHead: React.FunctionComponent = (props) => {
     return (
         <thead className='table-head'>
             <tr>
-                <th>Type</th>
-                <th>Nom</th>
-                <th>État </th>
-                <th>Actif / Inactif depuis</th>
+                <th>État de Fonctionnement</th>
                 <th>Mesure</th>
                 <th>Unité</th>
-                <th className='show-details-head'>Show Details</th>
+                <th>Actif depuis </th>
+                <th className='capture-date'>Date de Capture:</th>
             </tr>
         </thead>
     );
