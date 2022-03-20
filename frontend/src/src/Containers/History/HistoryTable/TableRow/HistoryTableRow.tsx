@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react';
+import {v4 as uuidv4} from 'uuid';
 import { ILogs, IModule } from '../../../../Types/interface';
-import Detail from '../../../Detail/Detail';
 
 import './HistoryTableRow.scss';
 
@@ -14,7 +14,7 @@ const TableRow: React.FunctionComponent<ITableRowProps> = (props) => {
 
     let log:ILogs = props.log;
     return (
-        <tr className={ log.moduleState ? "table-row" : "table-row error"}>
+        <tr id={uuidv4()} className={ log.moduleState ? "table-row" : "table-row error"}>
 
             <td className={ log.moduleState ? " col-dark state " : "state error"}>
                 {log.moduleState === true ? "ON" : "OFF"}

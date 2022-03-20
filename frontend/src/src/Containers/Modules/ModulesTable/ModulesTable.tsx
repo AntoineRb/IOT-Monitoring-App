@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { v4 as uuidv4 } from 'uuid';
 
 import TableHead from './TableHead/TableHead';
 import './ModulesTable.scss';
@@ -34,7 +35,7 @@ const ModulesTable: React.FunctionComponent<ITableProps> = (props) => {
             if ( detail.moduleId !== 0) {
                 let moduleID:number = detail.moduleId;
                 let module:IModule = modulesListMap.get( moduleID );
-                tableRowArr.push(<TableRow key={moduleID} module={module} detail={detail}/>);
+                tableRowArr.push(<TableRow key={uuidv4()} module={module} detail={detail}/>);
             }
         }
         // console.log( tableRowArr );

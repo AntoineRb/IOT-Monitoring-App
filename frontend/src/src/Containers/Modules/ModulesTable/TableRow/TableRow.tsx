@@ -1,4 +1,6 @@
 import * as React from 'react';
+import {v4 as uuidv4} from 'uuid';
+
 import { NavLink } from 'react-router-dom';
 import { IDetail, IModule } from '../../../../Types/interface';
 
@@ -16,7 +18,7 @@ const TableRow: React.FunctionComponent<ITableRowProps> = (props) => {
 
     return (
         <>
-            <tr className={`table-row ${props.detail.moduleState ? '' : 'error'}`}>
+            <tr id={uuidv4()} className={`table-row ${props.detail.moduleState ? '' : 'error'}`}>
                 <td className='col-dark module-type'>
                     {module.type}
                 </td>
