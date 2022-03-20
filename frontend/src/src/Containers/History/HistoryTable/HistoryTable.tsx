@@ -3,21 +3,25 @@ import React, { ReactElement, useEffect, useState } from 'react';
 import TableHead from './TableHead/TableHead';
 import './HistoryTable.scss';
 
-import { ILogs} from '../../../Types/interface';
+import { ILogs, IModule} from '../../../Types/interface';
 import TableRow from './TableRow/TableRow';
-import { LOGS_INITIAL_STATE } from '../../../Types/initialState';
+
 
 
 
 interface ITableProps {
     logs: ILogs[]
 }
-// Return time in Hour between two dates
-// Expected date format in params : '2038-01-19 03:14:07' ( UTC timestamp )
-// get the expected format with : new Date().toJSON();
 
 const HistoryTable: React.FunctionComponent<ITableProps> = (props) => {
     
+    
+    let logsMap = new Map();
+    let tableRowArr = []
+
+    // Return time in Hour between two dates
+    // Expected date format in params : '2038-01-19 03:14:07' ( UTC timestamp )
+    // get the expected format with : new Date().toJSON();
     const getTimeBewtweenDate = ( pastDate:string , actualDate:string ) => {
         const past:any = new Date( pastDate );
         const actual:any = new Date( actualDate );
@@ -29,16 +33,18 @@ const HistoryTable: React.FunctionComponent<ITableProps> = (props) => {
         return timeStr;
     }
 
-    let logsMap = new Map();
-    let tableRowArr = []
-
     if ( props.logs !== undefined  ) {
         for ( let log of props.logs ) {
             if ( log.moduleId === 0 ) {
                 continue;
             }
-            console.log( log )
-            tableRowArr.push(<TableRow key={log.moduleId} log={log} calculTime={getTimeBewtweenDate}/>);
+            
+            tableRowArr.push(
+            <TableRow 
+            key={+log.operatingTime} 
+            log={log} 
+            calculTime={getTimeBewtweenDate}
+            />);
 
         }
         // console.log( tableRowArr );
@@ -52,7 +58,6 @@ const HistoryTable: React.FunctionComponent<ITableProps> = (props) => {
         <table className='modules-list-table'>
             <TableHead />
             <tbody>
-
                 {(tableRowArr.length > 0) &&
                     renderRow()
                 }

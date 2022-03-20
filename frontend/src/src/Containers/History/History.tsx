@@ -2,17 +2,22 @@ import React, {useState, useEffect} from 'react';
 
 import getModulesLogs from '../../services/getModuleLogs';
 import { LOGS_INITIAL_STATE } from '../../Types/initialState';
-import { ILogs } from '../../Types/interface';
+import { IDetail, ILogs, IModule } from '../../Types/interface';
 
 import HistoryTable from './HistoryTable/HistoryTable';
 
+interface IHistoryProps {
+  modulesList: IModule[],
+  detailsList: IDetail[]
+}
 
-const History: React.FunctionComponent = (props) => {
+const History: React.FunctionComponent<IHistoryProps> = (props) => {
 
+  // Get param :id in Url as moduleId
   const fullUrl = window.location.href;
   const params: string | string[] = fullUrl.split('/')
-  const id: number = +params[params.length - 1]
-  // console.log(id);
+  // moduleId
+  const id: number = +params[params.length - 1];
   const [ logs, setLogsList ]  = useState<ILogs[]>([LOGS_INITIAL_STATE]);
   const setLogsListState = (logsList: ILogs[]) => {
     if ( logsList !== undefined ) {
@@ -29,7 +34,7 @@ const History: React.FunctionComponent = (props) => {
     getModulesLogs( id, setLogsListState ); 
     const refreshModulesList = setInterval( async () => {
       await getModulesLogs( id, setLogsListState );
-    }, 10000);
+    }, 60000);
     return () => {
       window.clearInterval( refreshModulesList );
     }
@@ -38,7 +43,15 @@ const History: React.FunctionComponent = (props) => {
     return (
         <main>
           <section>
-            <HistoryTable logs={logs} />
+            { props.modulesList !== undefined &&
+              <div className='module-info'>
+                <h3>Type : { props.modulesList[id] == undefined ? 'X' : props.modulesList[id].id }</h3>
+                <h3>Nom : {  props.modulesList[id] == undefined ? 'X' : props.modulesList[id].name }</h3>
+                <h3>Données Envoyées : {  props.detailsList[id] == undefined ? 'X' : props.detailsList[id].dataCount }</h3>
+              </div>
+            }
+            <HistoryTable 
+            logs={logs}/>
           </section>
         </main>
     );

@@ -1,7 +1,6 @@
 import React, {useState, useEffect} from 'react';
-import { NavLink } from 'react-router-dom';
-import { LOGS_INITIAL_STATE } from '../../../../Types/initialState';
-import { ILogs } from '../../../../Types/interface';
+import { ILogs, IModule } from '../../../../Types/interface';
+import Detail from '../../../Detail/Detail';
 
 import './TableRow.scss';
 
@@ -14,16 +13,29 @@ const TableRow: React.FunctionComponent<ITableRowProps> = (props) => {
 
 
     let log:ILogs = props.log;
-    console.log(props.log);
     return (
-        <tr>
-            <td>{log.moduleState === true ? "ON" : "OFF"}</td>
-            <td>{log.moduleState === true ? log.value : "X"}</td>
-            <td>{log.unit}</td>
-            { (log.operatingTime !== undefined) &&
-                <td>{props.calculTime( log.operatingTime.toLocaleString(), new Date().toJSON() )}mn</td>
+        <tr className={ log.moduleState ? "table-row" : "table-row error"}>
+
+            <td className={ log.moduleState ? " col-dark state " : "state error"}>
+                {log.moduleState === true ? "ON" : "OFF"}
+            </td>
+
+            <td className='col-light'>
+                {log.moduleState === true ? log.value : "X"}
+            </td>
+
+            <td className='col-dark'>{log.unit}</td>
+
+            {(log.operatingTime !== undefined) ?
+                <td className='col-light'>
+                    {props.calculTime( log.operatingTime.toLocaleString(), new Date().toJSON() )}mn
+                </td> :
+                <td>?</td>
             }
+
+            <td className='col-dark'>{log.operatingTime}</td>
         </tr>
+
     );
 };
 
