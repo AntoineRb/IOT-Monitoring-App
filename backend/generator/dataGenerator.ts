@@ -1,8 +1,6 @@
 import { findMany as findAllModule, update } from "../services/module";
 import { findUnique as findDetail, update as updateDetail } from "../services/detail";
 import addDetailToLogs from "./addDetailToLogs";
-import { getDate, getTimeBewtweenDate } from "./date";
-import incrementDataCount from "./incrementDataCount";
 import { getRandomValue } from "./rendomValue";
 import toggleRandomModuleState from "./toggleModuleState";
 
