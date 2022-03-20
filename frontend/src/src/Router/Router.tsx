@@ -17,15 +17,21 @@ interface IRouterProps {
 const Router: React.FunctionComponent<IRouterProps> = ( props ) => {
     return (
         <Routes>
-          <Route path='/' element={<Modules 
+          <Route 
+          path='/' 
+          element={<Modules 
           modulesList={props.modulesList}
           detailsList={props.detailsList}/>}/>
-          <Route path='/add' element={<AddModule />}/>
-          <Route path='/module/detail/:id' element={<Detail />}/>
-          <Route path='/module/history/:id' element={<History 
-          modulesList={props.modulesList}
-          detailsList={props.detailsList}
-          />}/>
+          <Route 
+          path='/add' 
+          element={<AddModule />}/>
+          <Route 
+          path='/module/detail/:id' 
+          element={<Detail />}/>
+          <Route 
+          path='/module/history/:id' 
+          element={<History
+          detailsList={props.detailsList}/>}/>
         </Routes>
     );
 };
