@@ -27,7 +27,7 @@ async function toggleModuleState ( moduleID:number ) {
     }
     await addDetailToLogs(moduleDetail);
     await updateDetail( moduleID, {
-        value:          moduleDetail.value,
+        value:          0,
         minValue:       moduleDetail.minValue,
         maxValue:       moduleDetail.maxValue,
         unit:           moduleDetail.unit,
