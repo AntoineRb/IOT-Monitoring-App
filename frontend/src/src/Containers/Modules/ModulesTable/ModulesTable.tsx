@@ -31,14 +31,12 @@ const ModulesTable: React.FunctionComponent<ITableProps> = (props) => {
             if ( detail.moduleId === 0 ) {
                 continue;
             }
-            console.log( detail )
             if ( detail.moduleId !== 0) {
                 let moduleID:number = detail.moduleId;
                 let module:IModule = modulesListMap.get( moduleID );
                 tableRowArr.push(<TableRow key={uuidv4()} module={module} detail={detail}/>);
             }
         }
-        // console.log( tableRowArr );
     }
 
     const renderRow = () => {
