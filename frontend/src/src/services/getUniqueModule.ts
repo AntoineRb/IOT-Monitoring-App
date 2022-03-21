@@ -1,5 +1,7 @@
+import BASE_URL from "./config";
+
 const getUniqueModule =  async ( moduleId:number, setValueFunc: any ) => {
-    await fetch(`http://localhost:8080/module/${moduleId}`, { // Change Later For Base URL
+    await fetch(`${BASE_URL}/module/${moduleId}`, { // Change Later For Base URL
         method: "GET",
         headers: {
             "Content-Type":  "application/json; charset=UTF-8"

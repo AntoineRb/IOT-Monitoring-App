@@ -24,8 +24,6 @@ async function dataGenerator () {
         const min = moduleDetail.minValue;
         const max = moduleDetail.maxValue;
         const newValue:number = getRandomValue( min, max );
-        console.log( newValue );
-        console.log( module );
         await updateDetail( moduleID, {
             value:    newValue,
             minValue: moduleDetail.minValue,
