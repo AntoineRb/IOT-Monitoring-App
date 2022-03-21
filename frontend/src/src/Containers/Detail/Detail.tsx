@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import { NavLink } from 'react-router-dom';
-import LineChart from '../../Components/Chars/LineChars';
+import LineChart from '../../Components/Chart/LineChart';
 
 import getUniqueDetail from '../../services/getUniqueDetail';
 import getUniqueModule from '../../services/getUniqueModule';
@@ -40,6 +40,9 @@ const Detail: React.FunctionComponent = () => {
     return (
         <main>
           <section className='info-section'>
+              <div className='chart-container'>
+                <LineChart moduleId={moduleId}/>
+              </div>
               <div className='actual-info'>
                   { module !== MODULE_INITIAL_STATE &&
                       <p className='type'>{module.type}</p>
@@ -57,7 +60,6 @@ const Detail: React.FunctionComponent = () => {
                       </>
                   }
               </div>
-                  {/* <LineChart /> */}
           </section>
         </main>
     );
