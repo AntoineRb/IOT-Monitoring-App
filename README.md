@@ -38,7 +38,7 @@
 ### Page de visualisation des modules
 <img src="./Docs/wireframes/modules-page.png"/>
 
-### Page de Visualisation de des détails d'un module
+### Page de Visualisation des détails d'un module
 <img src="./Docs/wireframes/detail-page.png"/>
 
 ### Page de Vérification des logs d'un module
@@ -106,7 +106,7 @@
 
 ## 3-Mise En place de la BDD ( Postgres )
 
-Installation et Creation de **DB** et de **ROLE** : https://doc.ubuntu-fr.org/postgresql
+Installation et Création de **DB** et de **ROLE** : https://doc.ubuntu-fr.org/postgresql
 
 [Documentation Officiel de Postgres](https://www.postgresql.org/docs/14/index.html)
 
@@ -114,13 +114,14 @@ Installation et Creation de **DB** et de **ROLE** : https://doc.ubuntu-fr.org/po
 ## 4-Définir les variables d'environnement 
 
 ### Configuration du Serveur et de  la Base De Données
-- Créer un fichier ``.env`` à la racine du projet puis y saisir ceci 
+- Créer un fichier ``.env`` à la racine du projet puis y saisir ceci :
 
     - ``DATABASE_URL="postgresql://USER_NAME:PASSWORD@localhost:5432/DB_NAME?schema=public"``
-	    - Cette varianle correspond à **l'URL de votre base de données.**
+	    - Cette variable correspond à **l'URL de votre base de données.**
 	    - Vous devez remplacer **"USER_NAME:PASSWORD"** par vos identifiants de Base De Données Postgres
-    - ``PORT="8080"``
-	    - Port sur lequel le serveur démarre (vous pouvez le remplacer si une de vos applications tourne déjà sur celui-ci ).
+        - ``5432`` : Port part défaut de **Postgres**
+        - ``DB_NAME`` :  Nom de votre **BDD**
+        - ``PORT="8080"``Port sur lequel le serveur démarre (vous pouvez le remplacer si une de vos applications tourne déjà sur celui-ci ).
 
 ### Configuration de l'Application frontend
 - Vous devez ouvrir  le fichier ``config.ts``  en suivant le chemin ci-dessous:
