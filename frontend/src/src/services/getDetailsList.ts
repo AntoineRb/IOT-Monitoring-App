@@ -1,5 +1,7 @@
+import BASE_URL from "./config";
+
 const getDetailsList =  async ( setValueFunc: any ) => {
-    await fetch('http://localhost:8080/detail/all', { // Change Later For Base URL
+    await fetch(`${BASE_URL}/detail/all`, { // Change Later For Base URL
         method: "GET",
         headers: {
             "Content-Type":  "application/json; charset=UTF-8"

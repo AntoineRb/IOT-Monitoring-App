@@ -1,4 +1,5 @@
 import { IDetail, IModule } from "../Types/interface";
+import BASE_URL from "./config";
 
 interface IData {
     module: IModule
@@ -21,7 +22,7 @@ const insertNewModule =  async ( data: IData ) => {
         name: data.module.name
     }
     // Request Api to create a new Module
-    await fetch('http://localhost:8080/module/add', { // Change Later For Base URL
+    await fetch(`${BASE_URL}/module/add`, { // Change Later For Base URL
         method: "POST",
         headers: {
             "Content-Type":  "application/json; charset=UTF-8"
