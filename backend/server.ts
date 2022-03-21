@@ -33,6 +33,6 @@ const server: Server = app.listen( PORT, async () => {
 });
 
 // dataGenerator Script Automation
-// setInterval(() => {         
-//     dataGenerator();
-// }, 40000);
+setInterval(() => {         
+    dataGenerator();
+}, 40000);

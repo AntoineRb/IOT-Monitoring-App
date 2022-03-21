@@ -1,4 +1,5 @@
 import { PrismaClient } from "@prisma/client";
+import dataGenerator from "../generator/dataGenerator";
 
 import { ILogs } from "../types/interface";
 
@@ -19,12 +20,17 @@ export const findMany = async ( moduleId:number ) => {
 }
 
 export const findAllValues = async ( moduleId:number ) => {
-    const data = await prisma.logs.findMany({
+    const logs = await prisma.logs.findMany({
         where: {
             moduleId
         }
     });
-    return data.map( log => log.value );
+    const logsArr: [number[]] = [[0, 0]];
+    let dataCount = 1;
+    await logs.forEach( log => {
+        logsArr.push([ ++dataCount, log.value ]);
+    })
+    return logsArr;
 }
 
 export const findFirst = async ( moduleId:number ) => {
