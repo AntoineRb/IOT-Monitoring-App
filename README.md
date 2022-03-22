@@ -131,7 +131,13 @@ Installation et Création de **DB** et de **ROLE** : https://doc.ubuntu-fr.org/p
 	Cette variable représente **l'URL de base pour effectuer des requêtes au serveur.** Si vous n'avez pas changer le port du serveur vous n'avez pas besoin de modifier cette variable
 	
 
-## 5-Mise en route de l'application
+## 5-Initialiser la Base de Données
+
+- Une fois que vous avez mis en place la base de données ainsi que l'environnement, vous pouvez lancer lancer la ``Migration de la Base De Données`` dans le but de **créer les tables, les relations etc...**
+	- Pour ce faire vous devez exécuter cette commande dans votre terminal :
+	`` npx prisma migrate dev init ``
+	- Pour finir on vous demandera de **saisir un nom** pour cette nouvelle migration.
+## 6-Mise en route de l'application
 - ### Démarrer le serveur :
 	- Dans votre terminal exécuter la commande `npm start` à la racine du projet.
 - ### Démarrer l'application  :
